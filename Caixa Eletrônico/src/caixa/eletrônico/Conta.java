@@ -12,12 +12,43 @@ package caixa.eletrônico;
  */
 public class Conta {
     
-    String agencia,conta,correntista;
-    Double saldo;
-    Boolean ativa;
+    private String agencia,conta,correntista;
+    private Double saldo;
+    private Boolean ativa;
+
+    public String getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(String agencia) {
+        this.agencia = agencia;
+    }
+
+    public String getConta() {
+        return conta;
+    }
+
+    public void setConta(String conta) {
+        this.conta = conta;
+    }
+
+    public String getCorrentista() {
+        return correntista;
+    }
+
+    public void setCorrentista(String correntista) {
+        this.correntista = correntista;
+    }
+
+    public Boolean isAtiva() {
+        return ativa;
+    }
+
+    public void setAtiva(Boolean ativa) {
+        this.ativa = ativa;
+    }
     
-    
-    void abrirconta (String ag, String cont, String correntist)
+    public void abrirconta (String ag, String cont, String correntist)
     {
        agencia = ag;
        conta = cont;
@@ -30,13 +61,47 @@ public class Conta {
     
     Boolean sacar (Double valor)
     {
+        Boolean retorno = false;
+        if(ativa == true)
+        {
+            if(valor<=saldo)
+            {
+                saldo = saldo - valor;
+                retorno = true;
+            }
+            else{
+                retorno = false;
+            }
+        }
+        else{
         return false;
+        }
+       return retorno;
     }
     
     Boolean depositar (Double valor)
     {
-        return false;
+        Boolean retorno = null;
+        if(ativa == true)
+        {
+            saldo = saldo + valor;
+            retorno = true;
+        }
+        else{
+            retorno = false;
+        }
+        return retorno;
     }
+    
+    void fecharConta()
+    {
+        ativa = false;
+    }
+    Boolean retornarFecharConta ()
+    {
+        return ativa;
+    }
+    
     
    
     

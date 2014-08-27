@@ -32,6 +32,15 @@ public class CaixaEletrônico {
         else {
             JOptionPane.showMessageDialog(null, "Deposito não realizado");
         }
+        
+        deucerto = c.sacar(5.0);
+        if (deucerto==true)
+        {
+            JOptionPane.showMessageDialog(null, "Saque realizado com sucesso");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Saque não realizado");
+        }
                 
     }
     
