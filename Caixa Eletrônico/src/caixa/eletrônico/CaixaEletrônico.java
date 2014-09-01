@@ -19,7 +19,10 @@ public class CaixaEletrônico {
      */
     public static void main(String[] args) {
         Conta c = new Conta();
+        Banco b = new Banco();
+        
         Boolean deucerto;
+        String nome,numero,imovel,carro,eimovel,ecarro;
         
         c.abrirconta("Daniel","123456","7690000");
         
@@ -41,7 +44,47 @@ public class CaixaEletrônico {
         else{
             JOptionPane.showMessageDialog(null, "Saque não realizado");
         }
-                
+       
+        
+       nome=JOptionPane.showInputDialog("Digite o nome do banco: ");
+       b.setNome(nome);
+       
+       numero=JOptionPane.showInputDialog("Digite o numero do banco: ");
+       b.setNumero(numero);
+       
+       imovel = JOptionPane.showInputDialog("Oferece emprestimo imovel(S/N):");
+       
+       if(imovel.equals("S")){
+           b.setEmprestimo(true);
+       }
+       else{
+           b.setEmprestimo(false);
+       }
+       
+       if(b.isEmprestimo()==true){
+           eimovel = "Sim";
+       }
+       else{
+           eimovel = "Não";
+       }
+       
+       carro = JOptionPane.showInputDialog("Oferece emprestimo carro(S/N):");
+       
+       if(carro.equals("S")){
+          b.setEmprestcar(true);
+       }
+       else{
+           b.setEmprestcar(false);
+       }
+       
+       if(b.isEmprestcar()==true){
+          ecarro = "Sim";
+       }
+       else{
+           ecarro = "Não";
+           
+           JOptionPane.showMessageDialog(null, "Nome do banco: "+b.getNome()+ "\n Numero do banco: "+b.getNumero()+"\n Emprestimo imovel"+eimovel+"\n Empresta carro "+ecarro);
+       }
     }
     
 }

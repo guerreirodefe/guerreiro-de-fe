@@ -63,7 +63,7 @@ public class Cinema {
         a.AtribuirNacionalidade(nacionalidade);
         
         ganhou = JOptionPane.showInputDialog("Ganhou o oscar(S/N):");
-       
+      
         if(ganhou.equals("S"))
        {
            a.atribuirVencedorOscar(true);
