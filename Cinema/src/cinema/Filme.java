@@ -66,7 +66,7 @@ public class Filme {
        
         boolean maioridade = clas < idade;
         
-       if (maioridade = false){
+       if (maioridade = true){
            JOptionPane.showMessageDialog(null,"Você não pode assistir este filme");
        }
        else{

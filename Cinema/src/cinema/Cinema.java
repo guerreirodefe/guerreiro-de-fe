@@ -44,11 +44,11 @@ public class Cinema {
         
         genero=JOptionPane.showInputDialog("Digite o genero");
         f.atribuirGenero(genero);
-       
-        JOptionPane.showMessageDialog(null,"   Dados do filme \n"+" Nome do filme:"+ f.retornarNome() + "\n Duração do filme:" + f.retornarDura() + " minutos"+ " \n Classificação do filme: "+ f.retornarClas() + " anos"+"\n Genero do filme : "+ f.retornarGenero());
         
         idad=Integer.parseInt(JOptionPane.showInputDialog("Digite a sua idade"));
         f.atribuirIdade(idad);
+       
+        JOptionPane.showMessageDialog(null,"   Dados do filme \n"+" Nome do filme:"+ f.retornarNome() + "\n Duração do filme:" + f.retornarDura() + " minutos"+ " \n Classificação do filme: "+ f.retornarClas() + " anos"+"\n Genero do filme : "+ f.retornarGenero());
         
         nomeator=JOptionPane.showInputDialog("Digite o nome do ator");
         a.AtribuirNome(nomeator);
@@ -89,7 +89,7 @@ public class Cinema {
         totalfa=Integer.parseInt(JOptionPane.showInputDialog("Digite o total de filmes do ator no ultimo ano:"));
         a.atribuirTotalFilmesA(totalfa);
         
-        JOptionPane.showMessageDialog(null," Nome do ator:"+a.retornarNome()+"\n Ano de nascimento do ator"+a.retornarDatanas()+"\n Cache do ator: "+a.retornarCache()+"\n Nacionalidade do ator:"+a.retornarNacionalidade()+"\n Total de filmes:"+a.retornarTotalFilmes()+"\n Total de filmes do ultimo ano "+a.retornarTotalFilmesA()+"\nOs ganhos do ator foi de "+a.retornarganhosator());
+        JOptionPane.showMessageDialog(null," Nome do ator:"+a.retornarNome()+"\n Ano de nascimento do ator"+a.retornarDatanas()+"\n Cache do ator: "+a.retornarCache()+"\n Nacionalidade do ator:"+a.retornarNacionalidade()+"\n Total de filmes:"+a.retornarTotalFilmes()+"\n Total de filmes do ultimo ano "+a.retornarTotalFilmesA()+"\n Os ganhos do ator foi de "+a.retornarganhosator()+"\n O ator ganhou oscar: "+ganhou);
         
     }
     

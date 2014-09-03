@@ -83,7 +83,7 @@ public class CaixaEletrônico {
        else{
            ecarro = "Não";
            
-           JOptionPane.showMessageDialog(null, "Nome do banco: "+b.getNome()+ "\n Numero do banco: "+b.getNumero()+"\n Emprestimo imovel"+eimovel+"\n Empresta carro "+ecarro);
+           JOptionPane.showMessageDialog(null, "Nome do banco: "+b.getNome()+ "\n Numero do banco: "+b.getNumero()+"\n Emprestimo imovel: "+eimovel+"\n Empresta carro: "+ecarro);
        }
     }
     
