@@ -16,6 +16,25 @@ public class Conta {
     private Double saldo;
     private Boolean ativa;
 
+    public Conta()
+    {
+        saldo = 0.0;
+        //NULL significa NAO ATRIBUIDO !!!
+        agencia = null;
+        correntista=null;
+        conta=null;
+        ativa=false;
+        
+    }
+
+    public Double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(Double saldo) {
+        this.saldo = saldo;
+    }
+    
     public String getAgencia() {
         return agencia;
     }
