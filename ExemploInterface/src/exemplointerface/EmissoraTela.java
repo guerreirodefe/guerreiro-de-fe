@@ -43,7 +43,6 @@ public class EmissoraTela extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         txtEndereco = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         cboExibicao = new javax.swing.JComboBox();
@@ -53,6 +52,9 @@ public class EmissoraTela extends javax.swing.JFrame {
         btnAnterior = new javax.swing.JButton();
         btnProximo = new javax.swing.JButton();
         btnUltimo = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
+        btnConsultar = new javax.swing.JButton();
+        btnAtualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,13 +73,6 @@ public class EmissoraTela extends javax.swing.JFrame {
         txtEndereco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEnderecoActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Exibir Informações");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
             }
         });
 
@@ -160,32 +155,53 @@ public class EmissoraTela extends javax.swing.JFrame {
                     .addComponent(btnUltimo)))
         );
 
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
+        btnConsultar.setText("Consultar");
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
+
+        btnAtualizar.setText("Atualizar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(110, 110, 110)
-                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cboExibicao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(47, 47, 47)
                         .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnExcluir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnConsultar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAtualizar))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel3)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addGap(110, 110, 110)
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(cboExibicao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(28, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(159, 159, 159)
                 .addComponent(jLabel4)
@@ -212,36 +228,16 @@ public class EmissoraTela extends javax.swing.JFrame {
                     .addComponent(cboExibicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
                     .addComponent(jButton3)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(btnExcluir)
+                    .addComponent(btnConsultar)
+                    .addComponent(btnAtualizar))
                 .addGap(33, 33, 33))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      
-       String nome, endereço, exibicao;
-       nome = txtNome.getText();
-       endereço= txtEndereco.getText();
-       //pegar o que ele selecionou (string);
-       exibicao= cboExibicao.getSelectedItem().toString();
-       if((!nome.equals("")) && (!endereço.equals("")) && (!exibicao.equals("")))
-       {
-          if((exibicao.equals("Aberta")) || (exibicao.equals ("Fechada"))){
-       JOptionPane.showMessageDialog(null," Nome: "+ nome+"\n Endereço: "+endereço+"\n Exibiçao: "+exibicao);
-       }
-          else{
-              JOptionPane.showMessageDialog(null, "Digite corretamente as exibiçoes!!");
-          }
-       }
-       
-       else{
-           JOptionPane.showMessageDialog(null, "Digite todas as informações!!");
-       }
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderecoActionPerformed
         // TODO add your handling code here:
@@ -302,8 +298,9 @@ public class EmissoraTela extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPrimeiroActionPerformed
 
     private void btnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorActionPerformed
-        if(lista.size()>1)
+        if(lista.size()>1 && (posicao > 0))
         {
+           
         posicao = posicao - 1;
        
         //pegar o primeiro elemento da lista
@@ -323,10 +320,14 @@ public class EmissoraTela extends javax.swing.JFrame {
             cboExibicao.setSelectedIndex(2);
         }
         }
+        else{
+            JOptionPane.showMessageDialog(null, "Acabou");
+        }
+        
     }//GEN-LAST:event_btnAnteriorActionPerformed
 
     private void btnProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProximoActionPerformed
-        if(lista.size()>posicao)
+            if(lista.size()>posicao && (posicao == posicao))
         {
         posicao = posicao + 1;
         //pegar o primeiro elemento da lista
@@ -347,13 +348,18 @@ public class EmissoraTela extends javax.swing.JFrame {
             cboExibicao.setSelectedIndex(2);
         }
         }
+            else{
+               JOptionPane.showMessageDialog(null, "Acabou"); 
+            }
+        
     }//GEN-LAST:event_btnProximoActionPerformed
 
     private void btnUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUltimoActionPerformed
-         if(lista.size()==posicao)
+         if(lista.size()> 0)
         {
+           
+        posicao = lista.size()-1;
         
-        //pegar o primeiro elemento da lista
         Emissora elemento = lista.get(posicao);
         
         //atribuir os textos conforme o intem da minha lista
@@ -372,6 +378,40 @@ public class EmissoraTela extends javax.swing.JFrame {
         }
         }
     }//GEN-LAST:event_btnUltimoActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+       
+        lista.remove(lista.get(posicao));
+        Limpar();
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        
+        String nome = JOptionPane.showInputDialog("Digite o nome a ser consultado: ");
+        
+        Boolean encontrou = false;
+        
+        for (Emissora emissora : lista) {
+            //perguntar se o texto digitado é igual ao elemento da lista
+        if(nome.equals(emissora.getNomemis()))
+        {
+            encontrou = true;
+            //Exibir o conteúdo do formulário
+            //Parar for
+            break;
+        }
+        }
+        
+        if(encontrou==true)
+        {
+            JOptionPane.showMessageDialog(null, "Achou!!");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Não achou !!!");
+        }
+        
+    }//GEN-LAST:event_btnConsultarActionPerformed
    
      private void Limpar()
      {
@@ -419,11 +459,13 @@ public class EmissoraTela extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnterior;
+    private javax.swing.JButton btnAtualizar;
+    private javax.swing.JButton btnConsultar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPrimeiro;
     private javax.swing.JButton btnProximo;
     private javax.swing.JButton btnUltimo;
     private javax.swing.JComboBox cboExibicao;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
