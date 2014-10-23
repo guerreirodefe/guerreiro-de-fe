@@ -295,10 +295,13 @@ public class EmissoraTela extends javax.swing.JFrame {
             cboExibicao.setSelectedIndex(2);
         }
         }
+        else{
+            JOptionPane.showMessageDialog(null, "Acabou"); 
+        }
     }//GEN-LAST:event_btnPrimeiroActionPerformed
 
     private void btnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorActionPerformed
-        if(lista.size()>1 && (posicao > 0))
+        if(lista.size()>1 && (posicao > 0) )
         {
            
         posicao = posicao - 1;
@@ -321,16 +324,16 @@ public class EmissoraTela extends javax.swing.JFrame {
         }
         }
         else{
-            JOptionPane.showMessageDialog(null, "Acabou");
+            JOptionPane.showMessageDialog(null, "Não há nada antes !!!");
         }
         
     }//GEN-LAST:event_btnAnteriorActionPerformed
 
     private void btnProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProximoActionPerformed
-            if(lista.size()>posicao && (posicao == posicao))
+            if(lista.size()> 0 && (posicao < lista.size() - 1))
         {
         posicao = posicao + 1;
-        //pegar o primeiro elemento da lista
+        
         Emissora elemento = lista.get(posicao);
         
         //atribuir os textos conforme o intem da minha lista
@@ -349,7 +352,7 @@ public class EmissoraTela extends javax.swing.JFrame {
         }
         }
             else{
-               JOptionPane.showMessageDialog(null, "Acabou"); 
+               JOptionPane.showMessageDialog(null, "Não há nada depois !!!"); 
             }
         
     }//GEN-LAST:event_btnProximoActionPerformed
@@ -362,7 +365,7 @@ public class EmissoraTela extends javax.swing.JFrame {
         
         Emissora elemento = lista.get(posicao);
         
-        //atribuir os textos conforme o intem da minha lista
+        
         txtNome.setText(elemento.getNomemis());
         txtEndereco.setText(elemento.getEndemis());
         
@@ -377,6 +380,9 @@ public class EmissoraTela extends javax.swing.JFrame {
             cboExibicao.setSelectedIndex(2);
         }
         }
+         else{
+               JOptionPane.showMessageDialog(null, "Acabou"); 
+            }
     }//GEN-LAST:event_btnUltimoActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed

@@ -12,12 +12,12 @@ package revisao;
  */
 public class Professor {
     
-    String nome;
-    String endereço;
-    Double salario;
-    String escola;
-    Boolean aulatecnico;
-    Boolean aulasuperior;
+    private String nome;
+    private String endereço;
+    private Double salario;
+    private String escola;
+    private Boolean aulatecnico;
+    private Boolean aulasuperior;
 
     public String getNome() {
         return nome;

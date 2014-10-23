@@ -13,8 +13,8 @@ package televisao;
 public class Ator {
     
     private String nome,datadenas,email,nomea,cidade,endereco,bairro,estado,status;
-    private int quantn;
-    private double salario,cache;
+    private int quantn,quante;
+    private double salario,cache,ganhos;
     
     public String getNome() {
         return nome;
@@ -132,6 +132,26 @@ public class Ator {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public int getQuante() {
+        return quante;
+    }
+
+    public void setQuante(int quante) {
+        this.quante = quante;
+    }
+    
+    
+    public double getGanhos() {
+        
+        ganhos= ((cache * quante) + salario);
+        
+        return ganhos;
+    }
+
+    public void setGanhos(double ganhos) {
+        this.ganhos = ganhos;
     }
     
     
