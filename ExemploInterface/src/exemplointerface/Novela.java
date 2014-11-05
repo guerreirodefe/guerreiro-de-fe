@@ -1,10 +1,18 @@
-package televisão;
+package exemplointerface;
 
 public class Novela {
-    private String titulo, datapcap, dataucap, horaexib, autor, emissora;
+    private String titulo, datapcap, dataucap, horaexib, autor;
+    private Emissora emissora;
+    //private Emissora emissora
     private boolean violencia, sexo, drogas;
     private Integer ibope;
-
+    
+    public Novela()
+    {
+        ibope = 0;
+        this.emissora = new Emissora();
+    }
+    
     public String getTitulo() {
         return titulo;
     }
@@ -45,11 +53,11 @@ public class Novela {
         this.autor = autor;
     }
 
-    public String getEmissora() {
+    public Emissora getEmissora() {
         return emissora;
     }
 
-    public void setEmissora(String emissora) {
+    public void setEmissora(Emissora emissora) {
         this.emissora = emissora;
     }
 

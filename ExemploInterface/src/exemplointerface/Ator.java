@@ -1,4 +1,4 @@
-package televisão;
+package exemplointerface;
 
 public class Ator {
     private String nomeator, datanasc, email, nomeart, cidade, end, bairro, estado, status;

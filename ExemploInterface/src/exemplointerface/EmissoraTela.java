@@ -295,18 +295,16 @@ public class EmissoraTela extends javax.swing.JFrame {
             cboExibicao.setSelectedIndex(2);
         }
         }
-        else{
-            JOptionPane.showMessageDialog(null, "Acabou"); 
-        }
+       
     }//GEN-LAST:event_btnPrimeiroActionPerformed
 
     private void btnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorActionPerformed
-        if(lista.size()>1 && (posicao > 0) )
+        if((lista.size()> 1) && (posicao > 0) )
         {
            
         posicao = posicao - 1;
        
-        //pegar o primeiro elemento da lista
+        
         Emissora elemento = lista.get(posicao);
         //atribuir os textos conforme o intem da minha lista
         txtNome.setText(elemento.getNomemis());
@@ -330,7 +328,7 @@ public class EmissoraTela extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAnteriorActionPerformed
 
     private void btnProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProximoActionPerformed
-            if(lista.size()> 0 && (posicao < lista.size() - 1))
+            if((lista.size()> 0) && (posicao < lista.size() - 1))
         {
         posicao = posicao + 1;
         
@@ -380,9 +378,7 @@ public class EmissoraTela extends javax.swing.JFrame {
             cboExibicao.setSelectedIndex(2);
         }
         }
-         else{
-               JOptionPane.showMessageDialog(null, "Acabou"); 
-            }
+        
     }//GEN-LAST:event_btnUltimoActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -394,14 +390,18 @@ public class EmissoraTela extends javax.swing.JFrame {
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         
         String nome = JOptionPane.showInputDialog("Digite o nome a ser consultado: ");
-        
+        Integer posicaoachou = 0;
         Boolean encontrou = false;
         
         for (Emissora emissora : lista) {
             //perguntar se o texto digitado é igual ao elemento da lista
         if(nome.equals(emissora.getNomemis()))
         {
+            posicao = posicaoachou;
             encontrou = true;
+            txtNome.setText(emissora.getNomemis());
+            txtEndereco.setText(emissora.getEndemis());
+            
             //Exibir o conteúdo do formulário
             //Parar for
             break;
@@ -424,8 +424,7 @@ public class EmissoraTela extends javax.swing.JFrame {
         txtNome.setText("");
         txtEndereco.setText("");
         cboExibicao.setSelectedIndex(0);
-        
-        
+     
      }
     
     /**
