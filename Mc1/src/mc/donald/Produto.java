@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 
-package mcdonalds;
+package mc.donald;
 
 /**
  *
- * @author Aluno
+ * @author Daniel Bandeira
  */
 public class Produto {
     
@@ -43,7 +43,7 @@ public class Produto {
     
     public String descricaoCardapio ()
     {
-    return nome + "..." + preco;
+    return nome + "..." + preco +" ..."+ codigo;
     }
     
 }
