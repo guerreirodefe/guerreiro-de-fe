@@ -21,6 +21,7 @@ public class cidadeManter extends javax.swing.JFrame {
      */
     
     List<Cidade> lista;
+    Integer posicao;
     public cidadeManter() {
         initComponents();
         
@@ -56,12 +57,32 @@ public class cidadeManter extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Navegação", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         btnPrimeiro.setText("Primeiro");
+        btnPrimeiro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrimeiroActionPerformed(evt);
+            }
+        });
 
         btnAnterior.setText("Anterior");
+        btnAnterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnteriorActionPerformed(evt);
+            }
+        });
 
         btnProximo.setText("Proximo");
+        btnProximo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProximoActionPerformed(evt);
+            }
+        });
 
         btnUltimo.setText("Ultimo");
+        btnUltimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUltimoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -108,10 +129,25 @@ public class cidadeManter extends javax.swing.JFrame {
         });
 
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         btnConsultar.setText("Consultar");
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
 
         btnLimpar.setText("Limpar");
+        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -213,6 +249,93 @@ public class cidadeManter extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
+    private void btnPrimeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrimeiroActionPerformed
+        if (lista.size() > 0)
+       {
+           posicao = 0;
+           Cidade cidade = lista.get(0);
+           txtCodigo.setText(cidade.getCodigo().toString());
+           txtNome.setText(cidade.getNome());
+           
+           
+       }
+    }//GEN-LAST:event_btnPrimeiroActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        if ( txtCodigo.getText().isEmpty()== false){
+          lista.remove(posicao);
+          Limpar ();
+          posicao = 0;
+      }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        String consulta = JOptionPane.showInputDialog("Digite o nome: ");
+       
+       //Se ele digitou alguma coisa
+       Integer posicaoachou = 0;
+       Boolean encontrou = false;
+       if(consulta.isEmpty()== false)
+       {
+            for (Cidade cidade : lista) {
+               //verifico se o nome é igual ao digitado
+               if(consulta.equals(cidade.getNome())){
+                    txtCodigo.setText(cidade.getCodigo().toString());
+           txtNome.setText(cidade.getNome());
+           
+          
+           posicao=posicaoachou;
+           break; // SAI DO FOR
+               }
+               posicaoachou ++;
+               
+           }
+       }
+       if(encontrou == false)
+       {
+           JOptionPane.showMessageDialog(rootPane, "Pessoa não encontrada");
+       }
+    }//GEN-LAST:event_btnConsultarActionPerformed
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        Limpar();
+    }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void btnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorActionPerformed
+          if(posicao >0)
+        {
+            posicao = posicao - 1;
+             Cidade cidade = lista.get(posicao);
+           txtCodigo.setText(cidade.getCodigo().toString());
+           txtNome.setText(cidade.getNome());
+        }
+    }//GEN-LAST:event_btnAnteriorActionPerformed
+
+    private void btnProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProximoActionPerformed
+        if(posicao < lista.size()-1)
+        {
+            posicao = posicao + 1;
+             Cidade cidade = lista.get(posicao);
+           txtCodigo.setText(cidade.getCodigo().toString());
+           txtNome.setText(cidade.getNome());
+        }
+    }//GEN-LAST:event_btnProximoActionPerformed
+
+    private void btnUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUltimoActionPerformed
+         if(lista.size() > 0)
+        {
+            posicao = lista.size() - 1;
+           Cidade cidade = lista.get(posicao);
+           txtCodigo.setText(cidade.getCodigo().toString());
+           txtNome.setText(cidade.getNome());
+        }
+    }//GEN-LAST:event_btnUltimoActionPerformed
+private void Limpar()
+    {
+        txtCodigo.setText("");
+        txtNome.setText("");
+        
+    }
     /**
      * @param args the command line arguments
      */
