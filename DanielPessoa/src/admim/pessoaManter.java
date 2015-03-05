@@ -55,7 +55,7 @@ public class pessoaManter extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Navegação"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Navegação", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         jPanel1.setToolTipText("");
 
         btnPrimeiro.setText("Primeiro");
@@ -262,6 +262,7 @@ public class pessoaManter extends javax.swing.JFrame {
 
             }
         }
+        Limpar();
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed

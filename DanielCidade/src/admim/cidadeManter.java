@@ -247,6 +247,8 @@ public class cidadeManter extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(rootPane, "Cadastrado com Sucesso");
         }
         }
+        
+        Limpar();
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnPrimeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrimeiroActionPerformed
