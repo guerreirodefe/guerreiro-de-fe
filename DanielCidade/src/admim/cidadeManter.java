@@ -265,7 +265,7 @@ public class cidadeManter extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         if ( txtCodigo.getText().isEmpty()== false){
-          lista.remove(posicao);
+          lista.remove(lista.get(posicao));
           Limpar ();
           posicao = 0;
       }
