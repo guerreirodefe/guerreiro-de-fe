@@ -5,6 +5,10 @@
  */
 package admim;
 
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Daniel
@@ -34,6 +38,8 @@ public class Inicio extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenu();
         mnuGerenciarPergunta = new javax.swing.JMenuItem();
         mnuGerenciarLista = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        mnuListarRanking = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,6 +83,18 @@ public class Inicio extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuBar2);
 
+        jMenu2.setText("Ranking");
+
+        mnuListarRanking.setText("Listar");
+        mnuListarRanking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuListarRankingActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mnuListarRanking);
+
+        jMenuBar1.add(jMenu2);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -115,11 +133,22 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuGerenciarPerguntaActionPerformed
 
     private void mnuGerenciarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuGerenciarListaActionPerformed
-        perguntaListar tela = new perguntaListar();
+       perguntaListar tela = new perguntaListar();
       //fechar aoenas a janela
       tela.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
       tela.setVisible(true);
     }//GEN-LAST:event_mnuGerenciarListaActionPerformed
+
+    private void mnuListarRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListarRankingActionPerformed
+        rankingListar tela = null;
+        try {
+            tela = new rankingListar();
+        } catch (ParseException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tela.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        tela.setVisible(true);
+    }//GEN-LAST:event_mnuListarRankingActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,11 +187,13 @@ public class Inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuBar2;
     private javax.swing.JMenuItem mnuGerenciarJogador;
     private javax.swing.JMenuItem mnuGerenciarLista;
     private javax.swing.JMenuItem mnuGerenciarPergunta;
     private javax.swing.JMenuItem mnuListarJogador;
+    private javax.swing.JMenuItem mnuListarRanking;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,7 @@
  */
 package admim;
 
+import dao.JogadorDAO;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -21,34 +22,10 @@ public class jogadorListar extends javax.swing.JFrame {
      */
     public jogadorListar() {
         initComponents();
+        JogadorDAO dao = new JogadorDAO();
+        List<Jogador> lista = dao.listar();
         
-        List<Jogador> lista = new ArrayList<Jogador>();
-        
-        Jogador item = new Jogador();
-        
-        item.setLogin("danielbandeira7");
-        item.setSenha("daniel123");
-        item.setEmail("danielb@gmail.com");
-        
-        lista.add(item);
-        
-        item = new Jogador();
-        
-        item.setLogin("lucasbatata");
-        item.setSenha("lucas123");
-        item.setEmail("maydanito@gmail.com");
-        
-        lista.add(item);
-        
-        item = new Jogador();
-        
-        item.setLogin("renandomorro");
-        item.setSenha("renan123");
-        item.setEmail("renanzito@gmail.com");
-        
-        lista.add(item);
-        
-         DefaultTableModel modelo = (DefaultTableModel)tabela.getModel();
+        DefaultTableModel modelo = (DefaultTableModel)tabela.getModel();
         //cria um array com a mesma estrutura das colunas
         Object[] linha = new Object[modelo.getColumnCount()];
         
@@ -57,8 +34,7 @@ public class jogadorListar extends javax.swing.JFrame {
         for (Jogador joga : lista) {
             
             linha[0] = joga.getLogin();
-            linha[1] = joga.getSenha();
-            linha[2] = joga.getEmail();
+            linha[1] = joga.getEmail();
             
             modelo.addRow(linha);
             
@@ -89,14 +65,14 @@ public class jogadorListar extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Login", "Senha", "Email"
+                "Login", "Email"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -162,6 +138,7 @@ public class jogadorListar extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        jogadorManter tela = new jogadorManter();
        tela.setVisible(true);
+       tela.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

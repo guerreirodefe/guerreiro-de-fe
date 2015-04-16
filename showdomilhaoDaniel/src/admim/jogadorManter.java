@@ -5,6 +5,7 @@
  */
 package admim;
 
+import dao.JogadorDAO;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -21,8 +22,11 @@ public class jogadorManter extends javax.swing.JFrame {
      */
     private List<Jogador> lista;
     private Integer posicao;
-    public jogadorManter() {
-        lista = new ArrayList<Jogador>();
+public jogadorManter() {
+        //Buscar a lista no banco de dados
+        JogadorDAO dao = new JogadorDAO();
+        lista = dao.listar();
+            posicao = 0;
         initComponents();
     }
 
@@ -52,6 +56,7 @@ public class jogadorManter extends javax.swing.JFrame {
         btnExcluir = new javax.swing.JButton();
         btnConsultar = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -177,6 +182,13 @@ public class jogadorManter extends javax.swing.JFrame {
                 .addGap(23, 23, 23))
         );
 
+        jButton1.setText("Ir para Listagem");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -205,6 +217,10 @@ public class jogadorManter extends javax.swing.JFrame {
                                     .addComponent(txtSenha))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(144, 144, 144)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,7 +243,9 @@ public class jogadorManter extends javax.swing.JFrame {
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
@@ -245,20 +263,48 @@ public class jogadorManter extends javax.swing.JFrame {
             item.setSenha(txtSenha.getText());
             item.setEmail(txtEmail.getText());
             
-            lista.add(item);
+            //Instancio a classe de acesso a dados JogadorDAO
+            JogadorDAO dao = new JogadorDAO();
+            //chamo o inserir
+            boolean deucerto = dao.inserir(item);
+            if(deucerto = true)
+            {
+                JOptionPane.showMessageDialog(rootPane, "Cadastrado com sucesso");
+            }
+            else{
+                JOptionPane.showMessageDialog(rootPane, "Erro ao cadastrar");
+            }
+            
+            
+            lista = dao.listar();
+          
+            Limpar();
         
-            JOptionPane.showMessageDialog(rootPane, "Cadastrado com Sucesso");
+           
         }
-        Limpar();
+        
         
         
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        
-          lista.remove(lista.get(posicao));
-          Limpar ();
-          posicao = 0;
+        if (txtLogin.getText().isEmpty()==false)
+        {
+            JogadorDAO dao = new JogadorDAO();
+            Boolean deucerto = dao.excluir(lista.get(posicao));
+            if(deucerto==true)
+            {
+                JOptionPane.showMessageDialog(rootPane, "Excluido com sucesso");
+                lista = dao.listar();
+                Limpar();
+            }
+            else{
+                JOptionPane.showMessageDialog(rootPane, "ERRO ao excluir");
+            }
+            
+        }
+            
+         
       
     }//GEN-LAST:event_btnExcluirActionPerformed
 
@@ -339,6 +385,12 @@ public class jogadorManter extends javax.swing.JFrame {
            txtEmail.setText(jogador.getEmail()); 
         }
     }//GEN-LAST:event_btnUltimoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        jogadorListar tela = new jogadorListar();
+        tela.setVisible(true);
+        tela.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_jButton1ActionPerformed
 private void Limpar()
     {
         txtLogin.setText("");
@@ -390,6 +442,7 @@ private void Limpar()
     private javax.swing.JButton btnPrimeiro;
     private javax.swing.JButton btnProximo;
     private javax.swing.JButton btnUltimo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

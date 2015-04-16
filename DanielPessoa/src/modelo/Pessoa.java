@@ -8,12 +8,12 @@ package modelo;
 
 /**
  *
- * @author Aluno
+ * @author Daniel
  */
 public class Pessoa {
-    
     private Integer codigo;
-    private String nome,sexo; 
+    private String nome;
+    private String sexo; 
 
     public Integer getCodigo() {
         return codigo;
@@ -38,7 +38,6 @@ public class Pessoa {
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
-    
     
     
 }
